@@ -27,6 +27,11 @@ alias poweroff="doas poweroff"
 #!/bin/bash
 iatest=$(expr index "$-" i)
 
+# search through partial command history (autocomplete)
+
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+
 #######################################################
 # SOURCED ALIAS'S AND SCRIPTS BY zachbrowne.me
 #######################################################
