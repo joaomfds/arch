@@ -1,0 +1,1 @@
+rate-mirrors --allow-root --protocol https --entry-country rs --country-test-mirrors-per-country 10 --top-mirrors-number-to-retest 20 --max-jumps 1 --concurrency 5 arch | grep -v '^#' | head -n 5 | sudo tee /etc/pacman.d/mirrorlist

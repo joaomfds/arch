@@ -1,0 +1,9 @@
+set show-all-if-unmodified on
+set show-all-if-ambiguous on
+set colored-stats On
+set visible-stats On
+set mark-symlinked-directories On
+set colored-completion-prefix On
+set menu-complete-display-prefix On
+set bell-style visible
+set completion-ignore-case on
