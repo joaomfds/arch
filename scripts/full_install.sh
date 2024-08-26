@@ -7,8 +7,8 @@ sudo sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 25/' /etc/pacman.conf
 echo "Adding Chaotic AUR repository"
 sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
 sudo pacman-key --lsign-key 3056513887B78AEB
-sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
-sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+sudo pacman -U --noconfirm'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 
 CHAOTIC_AUR="[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist"
 
@@ -21,7 +21,7 @@ echo "Installing all pacman packages"
 sudo pacman -Syuu --needed --noconfirm - < packages
 
 echo "Installing Asus Fan Control"
-yay asus-fan-control
+yay -S --noconfirm asus-fan-control
 
 echo "Enabling AFC system service"
 sudo systemctl enable afc
