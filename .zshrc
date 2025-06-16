@@ -60,24 +60,17 @@ HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
-setopt correct                    # Auto correct mistakes
-setopt extendedglob               # Extended globbing. Allows using regular expressions with *
-setopt nocaseglob                 # Case insensitive globbing
-setopt rcexpandparam              # Array expension with parameters
-setopt nocheckjobs                # Don't warn about running processes when exiting
-setopt numericglobsort            # Sort filenames numerically when it makes sense
-setopt nobeep                     # No beep
-setopt appendhistory              # Immediately append history instead of overwriting
-setopt histignorealldups          # If a new command is a duplicate, remove the older one
-setopt autocd                     # if only directory path is entered, cd there.
-setopt inc_append_history         # save commands are added to the history immediately, otherwise only when shell exits.
-setopt histignorespace            # Don't save commands that start space
+setopt appendhistory
 setopt sharehistory
+setopt hist_ignore_space
+setopt hist_save_no_dups
+setopt hist_find_no_dups
+setopt NO_BEEP
 
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no
+zstyle ':completion:*' menu select
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --icons --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --icons --color $realpath'
 
