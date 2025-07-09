@@ -141,3 +141,10 @@ eval "$(zoxide init --cmd cd bash)"
 #if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
 #    exec startplasma-wayland
 #fi
+
+# ==============================
+# 12. Make hardware acceleration work on google-chrome. Also needs the chrome-flags enabled
+# ==============================
+export LIBVA_DRIVER_NAME=iHD # for intel-media-driver (Gen8+)                                      
+export LIBVA_DRIVERS_PATH=/usr/lib/dri                                                             
+export LIBVA_DRM_DEVICE=/dev/dri/renderD128                                                        
