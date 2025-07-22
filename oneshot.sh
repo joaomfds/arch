@@ -17,7 +17,9 @@ mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
 
 # Install base system
-pacstrap -c /mnt base linux linux-firmware sudo nano iwd dhcpcd efibootmgr grub thermald btop fastfetch git eza fd jq ripgrep yazi bash-completion starship zoxide fzf man-db man-pages reflector sway swaybg swaylock swayidle wmenu foot brightnessctl wireplumber pipewire-pulse pavucontrol chromium blueman thunar thunar-volman ristretto mousepad otf-font-awesome waybar archlinux-wallpaper autotiling wofi blueman chromium noto-fonts power-profiles-daemon xdg-user-dirs xorg-xwayland 
+pacstrap -c /mnt base linux linux-firmware-intel sudo nano iwd dhcpcd efibootmgr grub thermald btop fastfetch git eza fd jq ripgrep yazi bash-completion starship zoxide fzf man-db man-pages reflector wireplumber pipewire-pulse firefox blueman otf-font-awesome archlinux-wallpaper tlp xdg-user-dirs lightdm-gtk-greeter i3 dmenu brightnessctl pavucontrol thunar thunar-volman ristretto mousepad autotiling
+#xfce4 xfce4-goodies
+#sway swaybg swaylock swayidle wmenu foot brightnessctl pavucontrol chromium thunar thunar-volman ristretto mousepad waybar autotiling wofi xorg-xwayland
 
 sed -i "s/'fallback'//g" /mnt/etc/mkinitcpio.d/linux.preset
 
@@ -44,8 +46,8 @@ echo "joao:joao" | arch-chroot /mnt chpasswd
 arch-chroot /mnt bash -c "echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers"
 
 # Install bootloader
-arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=SDA
+arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id="UEFI OS"
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
-arch-chroot /mnt systemctl enable iwd dhcpcd thermald bluetooth power-profiles-daemon
+arch-chroot /mnt systemctl enable iwd dhcpcd thermald bluetooth tlp lightdm
 
 echo "Installation complete! Reboot to use your new system."
