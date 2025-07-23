@@ -84,9 +84,11 @@ arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 
 arch-chroot /mnt sed -i '/^GRUB_CMDLINE_LINUX=/ {s/"$/ modprobe.blacklist=nvidia,nvidia_modeset,nvidia_drm,nvidia_uvm,nouveau"/;}' /etc/default/grub
 
+arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
+
 arch-chroot /mnt systemctl enable NetworkManager thermald tlp 
-cp .bashrc /mnt/etc/bash.bashrc
-cp .nanorc /mnt/etc/nanorc
+cp -i .bashrc /mnt/etc/bash.bashrc
+cp -i .nanorc /mnt/etc/nanorc
 
 
 echo "Installation complete! Reboot to use your new system."
