@@ -34,20 +34,23 @@ done
 parted -s $DRIVE mklabel gpt
 parted -s $DRIVE mkpart primary fat32 1MiB 512MiB
 parted -s $DRIVE set 1 esp on
-parted -s $DRIVE mkpart primary ext4 512MiB 100%
+parted -s $DRIVE mkpart primary btrfs 512MiB 100%
 
 EFI_PART="${DRIVE}1"
 ROOT_PART="${DRIVE}2"
 
 mkfs.fat -F32 $EFI_PART
-mkfs.ext4 -F $ROOT_PART
+mkfs.btrfs -f $ROOT_PART
 
 mount $ROOT_PART /mnt
-mkdir /mnt/boot
-mount $EFI_PART /mnt/boot
+mount --mkdir $EFI_PART /mnt/boot
 
 # Install base system
-pacstrap -c /mnt base linux linux-firmware-intel sudo nano iwd dhcpcd efibootmgr grub thermald btop fastfetch git eza fd jq ripgrep yazi bash-completion starship zoxide fzf man-db man-pages reflector wireplumber pipewire-pulse otf-font-awesome archlinux-wallpaper tlp xdg-user-dirs
+pacstrap -c /mnt base linux linux-firmware-intel sudo nano archinstall base-devel network-managerm-applet efibootmgr grub thermald btop fastfetch git eza fd jq ripgrep yazi bash-completion starship zoxide fzf man-db man-pages reflector wireplumber pipewire-pulse pipewire-jack otf-font-awesome noto-fonts archlinux-wallpaper tlp xdg-user-dirs pkfile
+
+# For Plasma
+#plasma konsole kate ark intel-gpu-tools chromium partitionmanager dosfstools btrfs-tools
+
 #lightdm-gtk-greeter i3 dmenu brightnessctl pavucontrol thunar thunar-volman ristretto mousepad autotiling
 #xfce4 xfce4-goodies chromium
 #sway swaybg swaylock swayidle foot brightnessctl pavucontrol chromium thunar thunar-volman ristretto mousepad waybar autotiling wofi xorg-xwayland
@@ -59,7 +62,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 sed -i '/zram/{N;d;}' /mnt/etc/fstab
 
 # Setup time zone and localization
-arch-chroot /mnt ln -sf /usr/share/zoneinfo/UTC /etc/localtime
+arch-chroot /mnt ln -sf /usr/share/zoneinfo/Poland /etc/localtime
 arch-chroot /mnt hwclock --systohc
 echo "en_US.UTF-8 UTF-8" > /mnt/etc/locale.gen
 arch-chroot /mnt locale-gen
@@ -74,12 +77,12 @@ echo "root:$ROOT_PASS" | arch-chroot /mnt chpasswd
 # Create new user and set password
 arch-chroot /mnt useradd -m -G wheel -s /bin/bash "$USERNAME"
 echo "$USERNAME:$USER_PASS" | arch-chroot /mnt chpasswd
-arch-chroot /mnt bash -c "echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers"
+arch-chroot /mnt bash -c "echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers"
 
 # Install bootloader
 #arch-chroot /mnt pacman --noconfirm -S grub efibootmgr
 arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id="UEFI OS"
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
-arch-chroot /mnt systemctl enable iwd dhcpcd thermald tlp
+arch-chroot /mnt systemctl enable NetworkManager thermald tlp 
 
 echo "Installation complete! Reboot to use your new system."
