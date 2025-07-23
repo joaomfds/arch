@@ -89,6 +89,7 @@ arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 arch-chroot /mnt systemctl enable NetworkManager thermald tlp 
 cp -i .bashrc /mnt/etc/bash.bashrc
 cp -i .nanorc /mnt/etc/nanorc
+cp -i .bashrc /mnt/etc/skel/
 
 
 echo "Installation complete! Reboot to use your new system."
