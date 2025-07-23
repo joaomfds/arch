@@ -79,17 +79,17 @@ arch-chroot /mnt bash -c "echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers"
 # Install bootloader
 #arch-chroot /mnt pacman --noconfirm -S grub efibootmgr
 arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id="UEFI OS"
-
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
-
 arch-chroot /mnt sed -i '/^GRUB_CMDLINE_LINUX=/ {s/"$/ modprobe.blacklist=nvidia,nvidia_modeset,nvidia_drm,nvidia_uvm,nouveau"/;}' /etc/default/grub
-
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 
+# Enable services
 arch-chroot /mnt systemctl enable NetworkManager thermald tlp sddm bluetooth
-cp -i .bashrc /mnt/etc/bash.bashrc
-cp -i .nanorc /mnt/etc/nanorc
-cp -i .bashrc /mnt/etc/skel/
 
+# Setup dotfiles
+cp .bashrc /mnt/etc/bash.bashrc
+cp .nanorc /mnt/etc/nanorc
+cp .bashrc /mnt/etc/skel/
+tar xf dotfiles.tar.gz --directory=/mnt/etc/skel/
 
 echo "Installation complete! Reboot to use your new system."
