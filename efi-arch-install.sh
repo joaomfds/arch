@@ -82,7 +82,7 @@ arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootlo
 
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 
-sed -i '/^GRUB_CMDLINE_LINUX=/ {s/"$/ modprobe.blacklist=nvidia,nvidia_modeset,nvidia_drm,nvidia_uvm,nouveau"/;}' /mmt/etc/default/grub
+arch-chroot /mnt sed -i '/^GRUB_CMDLINE_LINUX=/ {s/"$/ modprobe.blacklist=nvidia,nvidia_modeset,nvidia_drm,nvidia_uvm,nouveau"/;}' /etc/default/grub
 
 arch-chroot /mnt systemctl enable NetworkManager thermald tlp 
 cp .bashrc /mnt/etc/bash.bashrc
