@@ -79,8 +79,11 @@ arch-chroot /mnt bash -c "echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers"
 # Install bootloader
 #arch-chroot /mnt pacman --noconfirm -S grub efibootmgr
 arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id="UEFI OS"
-sed -i '/^GRUB_CMDLINE_LINUX=/ {s/"$/ modprobe.blacklist=nvidia,nvidia_modeset,nvidia_drm,nvidia_uvm,nouveau"/;}' /mmt/etc/default/grub
+
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
+
+sed -i '/^GRUB_CMDLINE_LINUX=/ {s/"$/ modprobe.blacklist=nvidia,nvidia_modeset,nvidia_drm,nvidia_uvm,nouveau"/;}' /mmt/etc/default/grub
+
 arch-chroot /mnt systemctl enable NetworkManager thermald tlp 
 cp .bashrc /mnt/etc/bash.bashrc
 cp .nanorc /mnt/etc/nanorc
