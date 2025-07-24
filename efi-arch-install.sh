@@ -90,6 +90,6 @@ arch-chroot /mnt systemctl enable NetworkManager thermald tlp sddm bluetooth
 cp -v .bashrc /mnt/etc/bash.bashrc
 cp -v .nanorc /mnt/etc/nanorc
 cp -v .bashrc /mnt/etc/skel/
-tar xvf dotfiles.tar.gz --directory=/mnt/etc/skel/
+tar xvf dotfiles.tar.gz --directory=/mnt/home/$USERNAME/
 
 echo "Installation complete! Reboot to use your new system."
