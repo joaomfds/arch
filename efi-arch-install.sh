@@ -109,8 +109,8 @@ cp -v .bashrc /mnt/etc/skel/
 tar xvf dotfiles.tar.gz --directory=/mnt/home/$USERNAME/
 
 # Update tlp.conf
-echo "CPU_ENERGY_PERF_POLICY_ON_AC=balance_power" >> /mnt/tlp.d/01-powersave.conf
-echo "CPU_ENERGY_PERF_POLICY_ON_BAT=balance_power" >> /mnt/tlp.d/01-powersave.conf
+echo "CPU_ENERGY_PERF_POLICY_ON_AC=balance_power" >> /mnt/etc/tlp.d/01-powersave.conf
+echo "CPU_ENERGY_PERF_POLICY_ON_BAT=balance_power" >> /mnt/etc/tlp.d/01-powersave.conf
 echo "STOP_CHARGE_THRESH_BAT0=80" >> /mnt/tlp.d/02-battery_protection.conf
 
 echo "Installation complete! Reboot to use your new system."
