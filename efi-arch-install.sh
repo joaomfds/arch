@@ -87,9 +87,9 @@ arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 arch-chroot /mnt systemctl enable NetworkManager thermald tlp sddm bluetooth
 
 # Setup dotfiles
-cp .bashrc /mnt/etc/bash.bashrc
-cp .nanorc /mnt/etc/nanorc
-cp .bashrc /mnt/etc/skel/
-tar xf dotfiles.tar.gz --directory=/mnt/etc/skel/
+cp -v .bashrc /mnt/etc/bash.bashrc
+cp -v .nanorc /mnt/etc/nanorc
+cp -v .bashrc /mnt/etc/skel/
+tar xvf dotfiles.tar.gz --directory=/mnt/etc/skel/
 
 echo "Installation complete! Reboot to use your new system."
