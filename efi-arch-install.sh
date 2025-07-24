@@ -98,6 +98,7 @@ arch-chroot /mnt pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-ke
 arch-chroot /mnt pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 
 # Append to the end of /etc/pacman.conf
+CHAOTIC_AUR="[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist"   
 echo -e "$CHAOTIC_AUR" | sudo tee -a /mnt/etc/pacman.conf > /dev/null
 
 echo "Chaotic AUR repository added to /etc/pacman.conf"
