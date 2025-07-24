@@ -1,7 +1,10 @@
 #!/bin/bash
 set -e
 
-sudo reflector --threads 5 -c Austria -n 1 -p https --sort rate --save /etc/pacman.d/mirrorlist
+reflector --threads 5 -c Austria -n 1 -p https --sort rate --save /etc/pacman.d/mirrorlist
+
+sed -i '/ParallelDownloads/c\ParallelDownloads = 50' /etc/pacman.conf
+
 
 # List and ask for the target drive
 echo "Available drives:"
