@@ -111,6 +111,7 @@ alias l='ls -l'
 alias ll='ls -la'
 alias lt='ls -lT'
 alias syu='sudo pacman -Syu --needed'
+alias updatemirrors='reflector -c AT -p https --sort rate -f 1 --verbose > mirrorlist && sudo mv mirrorlist /etc/pacman.d/mirrorlist'
 
 # Aliases for Neovim as default editor
 alias v=nvim
