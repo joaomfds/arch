@@ -90,7 +90,7 @@ bind 'set completion-ignore-case on'
 # ==============================
 export EDITOR="nano"
 export VISUAL="nano"
-export GTK_THEME="Adwaita:dark"
+#export GTK_THEME="Adwaita:dark"
 export PAGER="less"
 export TERM="xterm-256color"
 export PATH="/bin:/sbin:/usr/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/.local/bin"
@@ -146,6 +146,6 @@ eval "$(zoxide init --cmd cd bash)"
 # ==============================
 # 12. Make hardware acceleration work on google-chrome. Also needs the chrome-flags enabled
 # ==============================
-export LIBVA_DRIVER_NAME=iHD # for intel-media-driver (Gen8+)                                      
-export LIBVA_DRIVERS_PATH=/usr/lib/dri                                                             
-export LIBVA_DRM_DEVICE=/dev/dri/renderD128                                                        
+#export LIBVA_DRIVER_NAME=iHD # for intel-media-driver (Gen8+)                                      
+#export LIBVA_DRIVERS_PATH=/usr/lib/dri                                                             
+#export LIBVA_DRM_DEVICE=/dev/dri/renderD128                                                        
