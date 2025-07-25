@@ -49,7 +49,7 @@ mount $ROOT_PART /mnt
 mount --mkdir $EFI_PART /mnt/boot
 
 # Install base system
-pacstrap /mnt base linux linux-firmware-intel sudo nano grub efibootmgr intel-media-driver intel-gpu-tools dosfstools btrfs-progs archinstall base-devel network-manager-applet thermald btop fastfetch git eza fd jq ripgrep yazi bash-completion starship zoxide fzf man-db man-pages reflector wireplumber pipewire-pulse pipewire-jack otf-font-awesome noto-fonts archlinux-wallpaper tlp xdg-user-dirs stress pkgfile plasma dolphin kio-admin konsole kate ark kwalletmanager partitionmanager chromium
+pacstrap /mnt base linux linux-firmware-intel sudo nano grub efibootmgr intel-media-driver intel-gpu-tools dosfstools btrfs-progs archinstall base-devel network-manager-applet thermald btop fastfetch git eza fd jq ripgrep yazi bash-completion starship zoxide fzf man-db man-pages reflector wireplumber pipewire-pulse pipewire-jack otf-font-awesome noto-fonts archlinux-wallpaper tlp xdg-user-dirs stress pkgfile plasma dolphin kio-admin konsole kate ark kwalletmanager partitionmanager
 
 #lightdm-gtk-greeter i3 dmenu brightnessctl pavucontrol thunar thunar-volman ristretto mousepad autotiling
 #xfce4 xfce4-goodies chromium
@@ -74,11 +74,6 @@ echo "archlinux" > /mnt/etc/hostname
 # Set root password
 echo "root:$ROOT_PASS" | arch-chroot /mnt chpasswd
 
-# Create new user and set password
-arch-chroot /mnt useradd -m -G wheel -s /bin/bash "$USERNAME"
-echo "$USERNAME:$USER_PASS" | arch-chroot /mnt chpasswd
-arch-chroot /mnt bash -c "echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers"
-
 # Install bootloader
 #arch-chroot /mnt pacman --noconfirm -S grub efibootmgr
 arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id="UEFI OS"
@@ -97,12 +92,17 @@ arch-chroot /mnt pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mi
 # Append to the end of /etc/pacman.conf
 CHAOTIC_AUR="[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist"   
 echo -e "$CHAOTIC_AUR" | sudo tee -a /mnt/etc/pacman.conf > /dev/null
-arch-chroot /mnt pacman -Sy octopi yay stremio
+arch-chroot /mnt pacman -Sy octopi yay stremio google-chrome
 
 echo "Chaotic AUR repository added to /etc/pacman.conf"
 
 # Enable services
-arch-chroot /mnt systemctl enable NetworkManager thermald tlp sddm bluetooth afc
+arch-chroot /mnt systemctl enable NetworkManager thermald tlp sddm bluetooth
+
+# Create new user and set password
+arch-chroot /mnt useradd -m -G wheel -s /bin/bash "$USERNAME"
+echo "$USERNAME:$USER_PASS" | arch-chroot /mnt chpasswd
+arch-chroot /mnt bash -c "echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers"
 
 # Setup dotfiles
 cp -v .bashrc /mnt/etc/bash.bashrc
