@@ -88,9 +88,6 @@ sed -i '/^GRUB_TIMEOUT=5$/c\GRUB_TIMEOUT=0' /mnt/etc/default/grub
 
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 
-# Enable services
-arch-chroot /mnt systemctl enable NetworkManager thermald tlp sddm bluetooth
-
 # Install Chaotic Aur
 arch-chroot /mnt pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
 arch-chroot /mnt pacman-key --lsign-key 3056513887B78AEB
@@ -100,9 +97,12 @@ arch-chroot /mnt pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mi
 # Append to the end of /etc/pacman.conf
 CHAOTIC_AUR="[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist"   
 echo -e "$CHAOTIC_AUR" | sudo tee -a /mnt/etc/pacman.conf > /dev/null
-arch-chroot /mnt pacman -Sy
+arch-chroot /mnt pacman -Sy octopi yay
 
 echo "Chaotic AUR repository added to /etc/pacman.conf"
+
+# Enable services
+arch-chroot /mnt systemctl enable NetworkManager thermald tlp sddm bluetooth afc
 
 # Setup dotfiles
 cp -v .bashrc /mnt/etc/bash.bashrc
