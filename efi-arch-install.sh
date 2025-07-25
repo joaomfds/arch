@@ -108,7 +108,8 @@ arch-chroot /mnt bash -c "echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers"
 cp -v .bashrc /mnt/etc/bash.bashrc
 cp -v .nanorc /mnt/etc/nanorc
 cp -v .bashrc /mnt/etc/skel/
-tar xvf dotfiles.tar.gz --directory=/mnt/home/$USERNAME/
+#tar xvf dotfiles.tar.gz --directory=/mnt/home/$USERNAME/
+tar xvf dotfiles.tar.gz --directory=/etc/skel/
 
 # Update tlp.conf
 echo "CPU_ENERGY_PERF_POLICY_ON_AC=balance_power" >> /mnt/etc/tlp.d/01-powersave.conf
