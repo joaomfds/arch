@@ -299,7 +299,7 @@ include "/usr/share/nano/*.nanorc"
 # bind Sh-M-N "{execute}| uconv -x nfc {enter}" main
 
 ## For snipping trailing blanks when you save a file:
-# bind ^S "{execute}| sed 's/\s\+$//' {enter}{savefile}" main
+bind ^S "{execute}| sed 's/\s\+$//' {enter}{savefile}" main
 
 ## If you would like nano to have keybindings that are more "usual",
 ## such as ^O for Open, ^F for Find, ^H for Help, and ^Q for Quit,
