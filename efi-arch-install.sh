@@ -86,13 +86,13 @@ arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 # Install Chaotic Aur
 arch-chroot /mnt pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
 arch-chroot /mnt pacman-key --lsign-key 3056513887B78AEB
-arch-chroot /mnt pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
-arch-chroot /mnt pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+arch-chroot /mnt pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+arch-chroot /mnt pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 
 # Append to the end of /etc/pacman.conf
 CHAOTIC_AUR="[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist"   
 echo -e "$CHAOTIC_AUR" | sudo tee -a /mnt/etc/pacman.conf > /dev/null
-arch-chroot /mnt pacman -Sy octopi yay stremio google-chrome
+arch-chroot /mnt pacman -Sy --noconfirm octopi yay stremio google-chrome
 
 echo "Chaotic AUR repository added to /etc/pacman.conf"
 
