@@ -106,7 +106,8 @@ cp -v .bashrc /mnt/etc/bash.bashrc
 cp -v .nanorc /mnt/etc/nanorc
 cp -v .bashrc /mnt/etc/skel/
 #tar xvf dotfiles.tar.gz --directory=/mnt/home/$USERNAME/
-tar xvf dotfiles.tar.gz --directory=/mnt/etc/skel/
+tar xvf dotfiles.tar.gz --directory=./
+mv dotfiles/.* /mnt/etc/skel/
 
 # Create new user and set password
 arch-chroot /mnt useradd -m -G wheel -s /bin/bash "$USERNAME"
