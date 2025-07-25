@@ -49,7 +49,7 @@ mount $ROOT_PART /mnt
 mount --mkdir $EFI_PART /mnt/boot
 
 # Install base system
-pacstrap /mnt base linux linux-firmware-intel sudo nano grub efibootmgr intel-media-driver intel-gpu-tools dosfstools btrfs-progs archinstall base-devel network-manager-applet thermald btop fastfetch git eza fd jq ripgrep yazi bash-completion starship zoxide fzf man-db man-pages reflector wireplumber pipewire-pulse pipewire-jack otf-font-awesome noto-fonts archlinux-wallpaper tlp xdg-user-dirs pkgfile plasma dolphin kio-admin konsole kate ark kwalletmanager partitionmanager chromium
+pacstrap /mnt base linux linux-firmware-intel sudo nano grub efibootmgr intel-media-driver intel-gpu-tools dosfstools btrfs-progs archinstall base-devel network-manager-applet thermald btop fastfetch git eza fd jq ripgrep yazi bash-completion starship zoxide fzf man-db man-pages reflector wireplumber pipewire-pulse pipewire-jack otf-font-awesome noto-fonts archlinux-wallpaper tlp xdg-user-dirs stress pkgfile plasma dolphin kio-admin konsole kate ark kwalletmanager partitionmanager chromium
 
 #lightdm-gtk-greeter i3 dmenu brightnessctl pavucontrol thunar thunar-volman ristretto mousepad autotiling
 #xfce4 xfce4-goodies chromium
@@ -97,7 +97,7 @@ arch-chroot /mnt pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mi
 # Append to the end of /etc/pacman.conf
 CHAOTIC_AUR="[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist"   
 echo -e "$CHAOTIC_AUR" | sudo tee -a /mnt/etc/pacman.conf > /dev/null
-arch-chroot /mnt pacman -Sy octopi yay
+arch-chroot /mnt pacman -Sy octopi yay stremio
 
 echo "Chaotic AUR repository added to /etc/pacman.conf"
 
