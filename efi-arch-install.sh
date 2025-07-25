@@ -76,9 +76,9 @@ echo "root:$ROOT_PASS" | arch-chroot /mnt chpasswd
 
 # Install bootloader
 #arch-chroot /mnt pacman --noconfirm -S grub efibootmgr
-arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id="UEFI OS"
+arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=$DRIVE
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
-arch-chroot /mnt sed -i '/^GRUB_CMDLINE_LINUX=/ {s/"$/ modprobe.blacklist=nvidia,nvidia_modeset,nvidia_drm,nvidia_uvm,nouveau"/;}' /etc/default/grub
+arch-chroot /mnt sed -i '/^GRUB_CMDLINE_LINUX=/ {s/"$/ modprobe.blacklist=nvidia,nvidia_modeset,nvidia_drm,nvidia_uvm,nouveau mitigations=off quiet splash"/;}' /etc/default/grub
 sed -i '/^GRUB_TIMEOUT=5$/c\GRUB_TIMEOUT=0' /mnt/etc/default/grub
 
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
@@ -99,9 +99,6 @@ echo "Chaotic AUR repository added to /etc/pacman.conf"
 # Enable services
 arch-chroot /mnt systemctl enable NetworkManager thermald tlp sddm bluetooth
 
-# Create new user and set password
-arch-chroot /mnt useradd -m -G wheel -s /bin/bash "$USERNAME"
-echo "$USERNAME:$USER_PASS" | arch-chroot /mnt chpasswd
 arch-chroot /mnt bash -c "echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers"
 
 # Setup dotfiles
@@ -110,6 +107,10 @@ cp -v .nanorc /mnt/etc/nanorc
 cp -v .bashrc /mnt/etc/skel/
 #tar xvf dotfiles.tar.gz --directory=/mnt/home/$USERNAME/
 tar xvf dotfiles.tar.gz --directory=/etc/skel/
+
+# Create new user and set password
+arch-chroot /mnt useradd -m -G wheel -s /bin/bash "$USERNAME"
+echo "$USERNAME:$USER_PASS" | arch-chroot /mnt chpasswd
 
 # Update tlp.conf
 echo "CPU_ENERGY_PERF_POLICY_ON_AC=balance_power" >> /mnt/etc/tlp.d/01-powersave.conf
