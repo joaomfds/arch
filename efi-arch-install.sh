@@ -92,7 +92,7 @@ arch-chroot /mnt pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-au
 # Append to the end of /etc/pacman.conf
 CHAOTIC_AUR="[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist"   
 echo -e "$CHAOTIC_AUR" | sudo tee -a /mnt/etc/pacman.conf > /dev/null
-arch-chroot /mnt pacman -Sy --noconfirm octopi yay stremio google-chrome
+arch-chroot /mnt pacman -Syu --noconfirm octopi yay stremio google-chrome
 
 echo "Chaotic AUR repository added to /etc/pacman.conf"
 
