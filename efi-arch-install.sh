@@ -12,26 +12,30 @@ lsblk -d -o NAME,SIZE,MODEL
 echo
 read -rp "Enter the drive to install Arch Linux on (e.g., /dev/sda): " DRIVE
 
-# Ask for root password
-while true; do
-    read -rsp "Enter new root password: " ROOT_PASS
-    echo
-    read -rsp "Confirm root password: " ROOT_PASS2
-    echo
-    [[ "$ROOT_PASS" == "$ROOT_PASS2" ]] && break
-    echo "Passwords do not match. Try again."
-done
+ROOT_PASS=root
+USER_PASS=user
+USERNAME=user
 
-# Ask for new user info
-read -rp "Enter new username: " USERNAME
-while true; do
-    read -rsp "Enter password for $USERNAME: " USER_PASS
-    echo
-    read -rsp "Confirm password for $USERNAME: " USER_PASS2
-    echo
-    [[ "$USER_PASS" == "$USER_PASS2" ]] && break
-    echo "Passwords do not match. Try again."
-done
+# Ask for root password
+# while true; do
+#     read -rsp "Enter new root password: " ROOT_PASS
+#     echo
+#     read -rsp "Confirm root password: " ROOT_PASS2
+#     echo
+#     [[ "$ROOT_PASS" == "$ROOT_PASS2" ]] && break
+#     echo "Passwords do not match. Try again."
+# done
+
+# # Ask for new user info
+# read -rp "Enter new username: " USERNAME
+# while true; do
+#     read -rsp "Enter password for $USERNAME: " USER_PASS
+#     echo
+#     read -rsp "Confirm password for $USERNAME: " USER_PASS2
+#     echo
+#     [[ "$USER_PASS" == "$USER_PASS2" ]] && break
+#     echo "Passwords do not match. Try again."
+# done
 
 # Partition, format and mount
 parted -s $DRIVE mklabel gpt
@@ -49,7 +53,7 @@ mount $ROOT_PART /mnt
 mount --mkdir $EFI_PART /mnt/boot
 
 # Install base system
-pacstrap /mnt base linux linux-firmware-intel sudo nano grub efibootmgr intel-media-driver intel-gpu-tools dosfstools btrfs-progs archinstall base-devel network-manager-applet thermald btop fastfetch git eza fd jq ripgrep yazi bash-completion starship zoxide bat fzf man-db man-pages reflector wireplumber pipewire-pulse pipewire-jack otf-font-awesome noto-fonts archlinux-wallpaper tlp xdg-user-dirs stress pkgfile plasma dolphin kio-admin konsole kate ark kwalletmanager partitionmanager
+pacstrap -c /mnt base linux linux-firmware-intel sudo nano grub efibootmgr intel-media-driver intel-gpu-tools dosfstools btrfs-progs archinstall base-devel network-manager-applet thermald btop fastfetch git eza fd jq ripgrep yazi bash-completion starship zoxide bat fzf man-db man-pages reflector wireplumber pipewire-pulse pipewire-jack otf-font-awesome noto-fonts archlinux-wallpaper tlp xdg-user-dirs stress pkgfile plasma dolphin kio-admin konsole kate ark kwalletmanager partitionmanager
 
 #lightdm-gtk-greeter i3 dmenu brightnessctl pavucontrol thunar thunar-volman ristretto mousepad autotiling
 #xfce4 xfce4-goodies chromium
@@ -92,7 +96,7 @@ arch-chroot /mnt pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-au
 # Append to the end of /etc/pacman.conf
 CHAOTIC_AUR="[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist"   
 echo -e "$CHAOTIC_AUR" | sudo tee -a /mnt/etc/pacman.conf > /dev/null
-arch-chroot /mnt pacman -Syu --noconfirm octopi yay stremio google-chrome
+pacstrap -c /mnt octopi yay stremio google-chrome
 
 echo "Chaotic AUR repository added to /etc/pacman.conf"
 
