@@ -67,7 +67,7 @@ export HISTSIZE=5000
 # - erasedups: Remove older duplicate commands from history
 # - ignoredups: Do not store duplicate commands in history
 # - ignorespace: Do not store commands that start with a space
-export HISTCONTROL=erasedups:ignoredups:ignorespace
+export HISTCONTROL=erasedups:ignorespace
 
 # ==============================
 # 7. Readline and Input Behavior
