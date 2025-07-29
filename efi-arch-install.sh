@@ -53,7 +53,11 @@ mount $ROOT_PART /mnt
 mount --mkdir $EFI_PART /mnt/boot
 
 # Install base system
-pacstrap -c /mnt base linux linux-firmware-intel sudo nano grub efibootmgr intel-media-driver intel-gpu-tools dosfstools btrfs-progs archinstall base-devel network-manager-applet thermald btop fastfetch git eza fd jq ripgrep yazi bash-completion starship zoxide bat fzf man-db man-pages reflector wireplumber pipewire-pulse pipewire-jack otf-font-awesome noto-fonts archlinux-wallpaper tlp xdg-user-dirs stress pkgfile plasma dolphin kio-admin konsole kate ark kwalletmanager partitionmanager
+pacstrap -c /mnt base linux linux-firmware-intel sudo nano grub efibootmgr intel-media-driver intel-gpu-tools /
+dosfstools btrfs-progs archinstall base-devel network-manager-applet thermald btop fastfetch git eza fd jq ripgrep /
+yazi bash-completion starship zoxide bat fzf man-db man-pages reflector wireplumber pipewire-pulse pipewire-jack /
+otf-font-awesome noto-fonts archlinux-wallpaper tlp xdg-user-dirs stress pkgfile /
+plasma dolphin kio-admin konsole kate ark kwalletmanager partitionmanager
 
 #lightdm-gtk-greeter i3 dmenu brightnessctl pavucontrol thunar thunar-volman ristretto mousepad autotiling
 #xfce4 xfce4-goodies chromium
