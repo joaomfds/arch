@@ -82,7 +82,7 @@ echo "root:$ROOT_PASS" | arch-chroot /mnt chpasswd
 #arch-chroot /mnt pacman --noconfirm -S grub efibootmgr
 arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=$DRIVE
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
-arch-chroot /mnt sed -i '/^GRUB_CMDLINE_LINUX=/ {s/"$/ modprobe.blacklist=nvidia,nvidia_modeset,nvidia_drm,nvidia_uvm,nouveau mitigations=off quiet splash"/;}' /etc/default/grub
+arch-chroot /mnt sed -i '/^GRUB_CMDLINE_LINUX=/ {s/"$/modprobe.blacklist=nvidia,nvidia_modeset,nvidia_drm,nvidia_uvm,nouveau mitigations=off quiet splash"/;}' /etc/default/grub
 sed -i '/^GRUB_TIMEOUT=5$/c\GRUB_TIMEOUT=0' /mnt/etc/default/grub
 
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
@@ -96,7 +96,7 @@ arch-chroot /mnt pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-au
 # Append to the end of /etc/pacman.conf
 CHAOTIC_AUR="[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist"   
 echo -e "$CHAOTIC_AUR" | sudo tee -a /mnt/etc/pacman.conf > /dev/null
-pacstrap -c /mnt octopi yay stremio google-chrome
+pacstrap -c /mnt octopi yay stremio google-chrome nvchad neovide
 
 echo "Chaotic AUR repository added to /etc/pacman.conf"
 
@@ -118,7 +118,7 @@ arch-chroot /mnt useradd -m -G wheel -s /bin/bash "$USERNAME"
 echo "$USERNAME:$USER_PASS" | arch-chroot /mnt chpasswd
 
 # Update tlp.conf
-echo "CPU_ENERGY_PERF_POLICY_ON_AC=balance_power" >> /mnt/etc/tlp.d/01-powersave.conf
+echo "CPU_ENERGY_PERF_POLICY_ON_AC=balance_performance" >> /mnt/etc/tlp.d/01-powersave.conf
 echo "CPU_ENERGY_PERF_POLICY_ON_BAT=balance_power" >> /mnt/etc/tlp.d/01-powersave.conf
 echo "STOP_CHARGE_THRESH_BAT0=80" >> /mnt/etc/tlp.d/02-battery_protection.conf
 
