@@ -1,16 +1,16 @@
 #!/bin/bash
 set -e
 
-reflector --threads 5 -c Austria -n 1 -p https --sort rate --save /etc/pacman.d/mirrorlist
-
-sed -i '/ParallelDownloads/c\ParallelDownloads = 50' /etc/pacman.conf
-
 
 # List and ask for the target drive
 echo "Available drives:"
 lsblk -d -o NAME,SIZE,MODEL
 echo
 read -rp "Enter the drive to install Arch Linux on (e.g., /dev/sda): " DRIVE
+
+reflector --threads 5 -c Austria -n 1 -p https --sort rate --save /etc/pacman.d/mirrorlist
+
+sed -i '/ParallelDownloads/c\ParallelDownloads = 50' /etc/pacman.conf
 
 ROOT_PASS=root
 USER_PASS=user
@@ -53,10 +53,10 @@ mount $ROOT_PART /mnt
 mount --mkdir $EFI_PART /mnt/boot
 
 # Install base system
-pacstrap -c /mnt base linux linux-firmware-intel sudo nano grub efibootmgr intel-media-driver intel-gpu-tools /
-dosfstools btrfs-progs archinstall base-devel network-manager-applet thermald btop fastfetch git eza fd jq ripgrep /
-yazi bash-completion starship zoxide bat fzf man-db man-pages reflector wireplumber pipewire-pulse pipewire-jack /
-otf-font-awesome noto-fonts archlinux-wallpaper tlp xdg-user-dirs stress pkgfile /
+pacstrap -c /mnt base linux linux-firmware-intel sudo nano grub efibootmgr intel-media-driver intel-gpu-tools \
+dosfstools btrfs-progs archinstall base-devel network-manager-applet thermald btop fastfetch git eza fd jq \
+ripgrep yazi bash-completion starship zoxide bat fzf man-db man-pages reflector wireplumber pipewire-pulse \
+pipewire-jack otf-font-awesome noto-fonts archlinux-wallpaper tlp xdg-user-dirs stress pkgfile \
 plasma dolphin kio-admin konsole kate ark kwalletmanager partitionmanager
 
 #lightdm-gtk-greeter i3 dmenu brightnessctl pavucontrol thunar thunar-volman ristretto mousepad autotiling
