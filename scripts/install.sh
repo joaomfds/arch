@@ -57,8 +57,8 @@ sed -i '/ParallelDownloads/c\ParallelDownloads = 50' /etc/pacman.conf
 
 pacstrap /mnt base linux linux-firmware-intel intel-media-driver intel-gpu-tools \
 intel-ucode base-devel bash-completion btop duf efibootmgr eza fastfetch fzf fish \
-git man-db man-pages nano ncdu openssh otf-font-awesome reflector starship \
-yazi zoxide \
+git man-db man-pages nano ncdu neovide openssh otf-font-awesome pacseek reflector \
+starship yazi zoxide \
 plasma-meta kde-system-meta kde-utilities-meta gnome-boxes \
 hyprland hypridle hyprlock hyprpolkitagent brightnessctl foot grim mako nwg-look \
 pavucontrol qt5ct tlp waybar wl-clip-persist wofi xdg-desktop-portal-hyprland
