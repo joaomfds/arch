@@ -1,0 +1,14 @@
+keymap:
+  - name: Vim_keys
+    remap:
+      M-h: left
+      M-j: down
+      M-k: up
+      M-l: right
+      M-y: home
+      M-u: page_up
+      M-i: page_down
+      M-o: end
+    device:
+      only: [/dev/input/event4]
+
