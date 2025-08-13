@@ -61,7 +61,7 @@ git man-db man-pages nano ncdu openssh otf-font-awesome reflector starship \
 yazi zoxide \
 plasma-meta kde-system-meta kde-utilities-meta \
 hyprland hypridle hyprlock hyprpolkitagent brightnessctl foot grim mako nwg-look \
-pavucontrol qt5ct tlp waybar wl-clip-persist wofi
+pavucontrol qt5ct tlp waybar wl-clip-persist wofi xdg-desktop-portal-hyprland
 
 # Generate fstab
 genfstab -U /mnt >> /mnt/etc/fstab
