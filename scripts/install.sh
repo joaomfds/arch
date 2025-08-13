@@ -56,11 +56,11 @@ reflector -c at -p http -f 1 --save /etc/pacman.d/mirrorlist
 sed -i '/ParallelDownloads/c\ParallelDownloads = 50' /etc/pacman.conf
 
 pacstrap /mnt base linux linux-firmware-intel intel-media-driver intel-gpu-tools \
-base-devel bash-completion btop duf efibootmgr eza fastfetch fzf fish \
+intel-ucode base-devel bash-completion btop duf efibootmgr eza fastfetch fzf fish \
 git man-db man-pages nano ncdu openssh otf-font-awesome reflector starship \
 yazi zoxide \
 plasma-meta kde-system-meta kde-utilities-meta \
-hyprland hypridle hyprlock hyprpolkitagent brightnessctl foot mako nwg-look \
+hyprland hypridle hyprlock hyprpolkitagent brightnessctl foot grim mako nwg-look \
 pavucontrol qt5ct tlp waybar wl-clip-persist wofi
 
 # Generate fstab
@@ -91,6 +91,7 @@ arch-chroot /mnt bootctl --path=/boot install
 echo "timeout 0" >> /mnt/boot/loader/loader.conf
 echo "default=archlinux" >> /mnt/boot/loader/loader.conf
 echo "linux /vmlinuz-linux" > /mnt/boot/loader/entries/archlinux.conf
+echo "initrd /intel-ucode.img" >> /mnt/boot/loader/entries/archlinux.conf
 echo "initrd /initramfs-linux.img" >> /mnt/boot/loader/entries/archlinux.conf
 echo "options root=$ROOT_PART rw modprobe.blacklist=nvidia,nvidia_modeset,nvidia_drm,nvidia_uvm,nouveau mitigations=off quiet splash" >> /mnt/boot/loader/entries/archlinux.conf
 
