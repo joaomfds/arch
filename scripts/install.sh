@@ -60,7 +60,7 @@ intel-ucode base-devel bash-completion aria2 btop btrfs-progs duf efibootmgr \
 eza fastfetch fzf fish git man-db man-pages nano ncdu neovide openssh \
 otf-font-awesome reflector starship stow tailscale wget yazi zoxide \
 docker docker-compose \
-plasma-meta kde-system-meta kde-utilities-meta gnome-boxes \
+plasma-meta kde-system-meta kde-utilities-meta ktorrent gnome-boxes \
 hyprland hypridle hyprlock hyprpolkitagent brightnessctl cliphist \
 foot grim mako nwg-look pavucontrol qt5ct slurp tlp waybar \
 wl-clip-persist wofi xdg-desktop-portal-hyprland archlinux-xdg-menu 
