@@ -63,7 +63,7 @@ docker docker-compose \
 plasma-meta kde-system-meta kde-utilities-meta gnome-boxes \
 hyprland hypridle hyprlock hyprpolkitagent brightnessctl cliphist \
 foot grim mako nwg-look pavucontrol qt5ct slurp tlp waybar \
-wl-clip-persist wofi xdg-desktop-portal-hyprland
+wl-clip-persist wofi xdg-desktop-portal-hyprland archlinux-xdg-menu 
 
 # Generate fstab
 genfstab -U /mnt >> /mnt/etc/fstab
