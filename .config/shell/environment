@@ -1,0 +1,18 @@
+export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$HOME/.local/bin"
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export EDITOR="nvim"
+export VISUAL="nvim"
+export MANPAGER="nvim +Man!"
+export TERM="xterm-256color"
+export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always {} 2>/dev/null || cat {} 2>/dev/null' --preview-window=right:60%"
+export CLICOLOR=0
+
+#export GTK_THEME="Adwaita:dark"
+
+# ==============================    
+# Make hardware acceleration work on google-chrome. Also needs the chrome-flags enabled 
+# ==============================
+#export LIBVA_DRIVER_NAME=iHD # for intel-media-driver (Gen8+)
+#export LIBVA_DRIVERS_PATH=/usr/lib/dri
+#export LIBVA_DRM_DEVICE=/dev/dri/renderD128

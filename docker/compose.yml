@@ -1,0 +1,42 @@
+services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./portainer:/data
+    ports:
+      - 9000:9000
+
+  homeassistant:
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    volumes:
+      - .homeassistant:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /run/dbus:/run/dbus:ro
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "67:67/udp" # Only required if you are using Pi-hole as your DHCP server
+      - "8080:80/tcp"
+    environment:
+      TZ: 'Europe/Tirane'
+      WEBPASSWORD: CHANGEME
+    volumes:
+      - /opt/pihole/etc-pihole:/etc/pihole
+      - /opt/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
+    cap_add:
+      - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
+    restart: unless-stopped

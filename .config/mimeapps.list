@@ -1,0 +1,12 @@
+[Added Associations]
+application/x-compressed-tar=ark.desktop;
+image/jpeg=org.kde.gwenview.desktop;google-chrome.desktop;com.google.Chrome.desktop;
+
+[Default Applications]
+application/x-compressed-tar=ark.desktop;
+image/jpeg=org.kde.gwenview.desktop;
+text/html=google-chrome.desktop
+x-scheme-handler/about=google-chrome.desktop
+x-scheme-handler/http=google-chrome.desktop
+x-scheme-handler/https=google-chrome.desktop
+x-scheme-handler/unknown=google-chrome.desktop

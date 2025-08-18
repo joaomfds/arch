@@ -1,0 +1,12 @@
+alias ls='eza --color --group-directories-first --icons'     # preferred listing
+alias la='ls -a'  # all files and dirs
+alias ll='ls -l'  # long format
+alias lt='ls -laT' # tree listing
+alias l='ls -lah'
+alias mkdir='mkdir -p'
+alias ps='ps auxf'
+alias syu='sudo pacman -Syu --needed'
+alias updatemirrors='sudo reflector -c AT -p https -f 1 --save /etc/pacman.d/mirrorlist'
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
