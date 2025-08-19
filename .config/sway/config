@@ -12,21 +12,21 @@ set $down j
 set $up k
 set $right l
 
-# Remap home/page keys to combinations using $mod+h/j/k/l and modifiers
-bindsym $mod+y exec wtype -k Prior      # Page Up key
-bindsym $mod+u exec wtype -k Home       # Home key
-bindsym $mod+i exec wtype -k End        # End key
-bindsym $mod+o exec wtype -k Next       # Page Down key
-
-# Example: remap home/page keys to combinations using $mod+h/j/k/l and modifiers
-bindsym $mod+ctrl+h exec 'wtype -k Left'
-bindsym $mod+ctrl+j exec 'wtype -k Down'
-bindsym $mod+ctrl+k exec 'wtype -k Up'
-bindsym $mod+ctrl+l exec 'wtype -k Right'
+## Remap home/page keys to combinations using $mod+h/j/k/l and modifiers
+#bindsym $mod+y exec wtype -k Prior      # Page Up key
+#bindsym $mod+u exec wtype -k Home       # Home key
+#bindsym $mod+i exec wtype -k End        # End key
+#bindsym $mod+o exec wtype -k Next       # Page Down key
+#
+## Example: remap home/page keys to combinations using $mod+h/j/k/l and modifiers
+#bindsym $mod+ctrl+h exec 'wtype -k Left'
+#bindsym $mod+ctrl+j exec 'wtype -k Down'
+#bindsym $mod+ctrl+k exec 'wtype -k Up'
+#bindsym $mod+ctrl+l exec 'wtype -k Right'
 
 set $term foot
 set $menu wofi --show drun --no-actions
-set $browser chromium
+set $browser google-chrome-stable
 set $filemanager thunar
 
 ### Output configuration
@@ -52,8 +52,8 @@ input type:keyboard {
 bindsym $mod+Return exec $term
 bindsym $mod+q kill
 bindsym $mod+d exec $menu
-bindsym alt+b exec $browser
-bindsym alt+e exec $filemanager
+bindsym $mod+b exec $browser
+bindsym $mod+e exec $filemanager
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -66,14 +66,14 @@ floating_modifier $mod normal
 bindsym $mod+Shift+c reload
 
 # Exit sway (logs you out of your Wayland session)
-bindsym $mod+Shift+e exec 'swaymsg exit'
+bindsym $mod+m exec 'swaymsg exit'
 
 # Moving around:
 # Move your focus around
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
+bindsym $mod+left focus left
+bindsym $mod+down focus down
+bindsym $mod+up focus up
+bindsym $mod+right focus right
 
 # Or use $mod+[up|down|left|right] (REMOVED ARROW KEY BINDS)
 # Move the focused window with the same, but add Shift
@@ -82,7 +82,6 @@ bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
 
-# Ditto, with arrow keys (REMOVED ARROW KEY BINDS)
 # Workspaces:
 # Switch to workspace
 bindsym $mod+1 workspace number 1
@@ -120,13 +119,13 @@ bindsym $mod+Shift+0 move container to workspace number 10
 # You can "split" the current object of your focus with
 # $mod+b or $mod+v, for horizontal and vertical splits
 # respectively.
-bindsym $mod+b splith
+bindsym $mod+h splith
 bindsym $mod+v splitv
 
 # Switch the current container between different layout styles
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+t layout toggle split
 
 # Make the current focus fullscreen
 bindsym $mod+f fullscreen
@@ -135,7 +134,7 @@ bindsym $mod+f fullscreen
 bindsym $mod+Shift+space floating toggle
 
 # Swap focus between the tiling area and the floating area
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Ctrl+space focus mode_toggle
 
 # Move focus to the parent container
 bindsym $mod+a focus parent
@@ -177,7 +176,7 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 bindsym Print exec grim
 
 bar {
-    swaybar_command waybar
+#    swaybar_command 'waybar --config ~/.config/waybar-sway/config.jsonc --style ~/.config/waybar-sway/style.css'
 #    position top
 #    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
 #colors {
@@ -186,6 +185,9 @@ bar {
 #    inactive_workspace #32323200 #32323200 #5c5c5c
 #    }
 }
+
 default_border pixel 2
+
+exec waybar --config ~/.config/waybar-sway/config.jsonc --style ~/.config/waybar-sway/style.css
 
 include /etc/sway/config.d/*
