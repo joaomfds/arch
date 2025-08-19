@@ -10,3 +10,4 @@ alias updatemirrors='sudo reflector -c AT -p https -f 1 --save /etc/pacman.d/mir
 alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
+alias h='Hyprland'
