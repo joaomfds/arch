@@ -70,6 +70,6 @@ function yy
 	rm -f -- "$tmp"
 end
 
-if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
+if test -z "$WAYLAND_DISPLAY" -a "$XDG_VTNR" = 1
     exec Hyprland
 end
