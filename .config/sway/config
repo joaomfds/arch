@@ -3,6 +3,8 @@ set $mod Mod4
 
 # Turn on autotiling
 exec autotiling
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 
+exec wl-clip-persist 
 
 # Home row direction keys, like vim
 set $left h
@@ -24,7 +26,7 @@ bindsym $mod+ctrl+l exec 'wtype -k Right'
 
 set $term foot
 set $menu wofi --show drun --no-actions
-set $browser google-chrome-stable
+set $browser chromium
 set $filemanager thunar
 
 ### Output configuration
