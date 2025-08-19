@@ -11,7 +11,7 @@ or other application using the libvirt API.
   <title>Arch Linux</title>
   <metadata>
     <boxes:gnome-boxes xmlns:boxes="https://wiki.gnome.org/Apps/Boxes">
-      <os-state>live</os-state>
+      <os-state>installed</os-state>
       <media-id>http://archlinux.org/archlinux/rolling:0</media-id>
       <media>/home/joao/Downloads/archlinux-2025.08.01-x86_64.iso</media>
     </boxes:gnome-boxes>
@@ -30,7 +30,6 @@ or other application using the libvirt API.
     </firmware>
     <loader readonly='yes' secure='yes' type='pflash' format='raw'>/usr/share/edk2/x64/OVMF_CODE.secboot.4m.fd</loader>
     <nvram template='/usr/share/edk2/x64/OVMF_VARS.4m.fd' templateFormat='raw' format='raw'>/home/joao/.config/libvirt/qemu/nvram/archlinux_VARS.fd</nvram>
-    <boot dev='cdrom'/>
     <boot dev='hd'/>
     <bootmenu enable='yes'/>
   </os>
@@ -48,7 +47,7 @@ or other application using the libvirt API.
     <timer name='hpet' present='no'/>
   </clock>
   <on_poweroff>destroy</on_poweroff>
-  <on_reboot>destroy</on_reboot>
+  <on_reboot>restart</on_reboot>
   <on_crash>destroy</on_crash>
   <pm>
     <suspend-to-mem enabled='no'/>
@@ -64,7 +63,7 @@ or other application using the libvirt API.
     </disk>
     <disk type='file' device='cdrom'>
       <driver name='qemu' type='raw'/>
-      <source file='/home/joao/Downloads/archlinux-2025.08.01-x86_64.iso' startupPolicy='mandatory'/>
+      <source file='/home/joao/Downloads/archlinux-2025.08.01-x86_64.iso' startupPolicy='optional'/>
       <target dev='hdc' bus='sata'/>
       <readonly/>
       <address type='drive' controller='0' bus='0' target='0' unit='2'/>
@@ -145,7 +144,7 @@ or other application using the libvirt API.
     <graphics type='spice'>
       <listen type='none'/>
       <image compression='off'/>
-      <gl enable='no'/>
+      <gl enable='yes'/>
     </graphics>
     <sound model='ich9'>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x1b' function='0x0'/>
@@ -153,7 +152,7 @@ or other application using the libvirt API.
     <audio id='1' type='spice'/>
     <video>
       <model type='virtio' heads='1' primary='yes'>
-        <acceleration accel3d='no'/>
+        <acceleration accel3d='yes'/>
       </model>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x01' function='0x0'/>
     </video>

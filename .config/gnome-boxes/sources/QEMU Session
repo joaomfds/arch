@@ -7,7 +7,7 @@ save-on-quit=true
 [display 6c2e2515-6523-4b1b-9fc4-57e0cc0b40f0]
 last-seen-name=Arch Linux
 uuid=6c2e2515-6523-4b1b-9fc4-57e0cc0b40f0
-acceleration-3d=false
+acceleration-3d=true
 run-in-bg=true
-access-last-time=1755523186682675
-access-ntimes=1
+access-last-time=1755547231373153
+access-ntimes=4
