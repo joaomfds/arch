@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-
+ 
 # List drives and ask for selection
 echo "Available drives:"
 lsblk -d -o NAME,SIZE,MODEL
