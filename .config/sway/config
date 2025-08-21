@@ -1,10 +1,52 @@
+################
+### MONITORS ###
+################
+output * bg /usr/share/backgrounds/archlinux/wave.png fill
+output HDMI-A-1 resolution 1920x1080 position 1920,0
+
+###################
+### MY PROGRAMS ###    
+################### 
+set $terminal foot
+set $filemanager dolphin
+set $menu wofi --show drun --no-actions
+set $browser google-chrome-stable
+
+#################    
+### AUTOSTART ###    
+#################  
+exec autotiling
+exec waybar --config ~/.config/waybar-sway/config.jsonc --style ~/.config/waybar-sway/style.css
+exec libinput-gestures
+#exec wl-clip-persist --clipboard regular
+exec wl-paste --type text --watch cliphist store # Stores only text data
+exec wl-paste --type image --watch cliphist store # Stores only image data
+exec /usr/lib/xdg-desktop-portal-kde
+exec /usr/lib/polkit-kde-authentication-agent-1 
+
+exec swayidle -w \
+    timeout 300 'swaylock -f -c 000000 -i /usr/share/backgrounds/archlinux/wave.png'\
+    timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+    before-sleep 'swaylock -f -c 000000 -i /usr/share/backgrounds/archlinux/wave.png'
+
+#############
+### INPUT ###
+#############
+input type:touchpad {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
+input type:keyboard {
+    xkb_layout "eu"
+}
+
+###################
+### KEYBINDINGS ###
+###################
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
-
-# Turn on autotiling
-exec autotiling
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 
-exec wl-clip-persist 
 
 # Home row direction keys, like vim
 set $left h
@@ -24,32 +66,7 @@ set $right l
 #bindsym $mod+ctrl+k exec 'wtype -k Up'
 #bindsym $mod+ctrl+l exec 'wtype -k Right'
 
-set $term foot
-set $menu wofi --show drun --no-actions
-set $browser google-chrome-stable
-set $filemanager thunar
-
-### Output configuration
-output * bg /usr/share/backgrounds/archlinux/wave.png fill
-output HDMI-A-1 resolution 1920x1080 position 1920,0
-
-exec swayidle -w \
-    timeout 300 'swaylock -f -c 000000 -i /usr/share/backgrounds/archlinux/wave.png'\
-    timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-    before-sleep 'swaylock -f -c 000000 -i /usr/share/backgrounds/archlinux/wave.png'
-
-input type:touchpad {
-    dwt enabled
-    tap enabled
-    natural_scroll enabled
-    middle_emulation enabled
-}
-input type:keyboard {
-    xkb_layout "eu"
-}
-
-### Key bindings
-bindsym $mod+Return exec $term
+bindsym $mod+Return exec $terminal
 bindsym $mod+q kill
 bindsym $mod+d exec $menu
 bindsym $mod+b exec $browser
@@ -187,7 +204,5 @@ bar {
 }
 
 default_border pixel 2
-
-exec waybar --config ~/.config/waybar-sway/config.jsonc --style ~/.config/waybar-sway/style.css
 
 include /etc/sway/config.d/*

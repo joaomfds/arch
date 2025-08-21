@@ -18,3 +18,11 @@ configs:
     "/":
       row: 1
       col: 0
+    "/run/media/joao/691ffbb4-00b2-4121-8222-929dbd8aecd0":
+      row: 2
+      col: 0
+      last_seen: 1755808261124685
+    "/run/media/joao/00d368a1-f11d-4124-b069-65499f57f520":
+      row: 3
+      col: 0
+      last_seen: 1755808290638338
