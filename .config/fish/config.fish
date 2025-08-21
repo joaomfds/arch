@@ -71,5 +71,9 @@ function yy
 end
 
 #if test -z "$WAYLAND_DISPLAY" -a "$XDG_VTNR" = 1
-#    exec Hyprland
+#    exec startplasma-wayland
+#end
+
+#if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
+#    exec startxfce4
 #end

@@ -60,6 +60,7 @@
         <property name="startup-notify" type="bool" value="true"/>
       </property>
       <property name="&lt;Super&gt;Return" type="string" value="exo-open --launch TerminalEmulator"/>
+      <property name="PowerOff" type="string" value="poweroff"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
