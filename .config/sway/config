@@ -17,7 +17,7 @@ set $browser google-chrome-stable
 #################  
 exec autotiling
 exec waybar --config ~/.config/waybar-sway/config.jsonc --style ~/.config/waybar-sway/style.css
-exec libinput-gestures
+#exec libinput-gestures
 #exec wl-clip-persist --clipboard regular
 exec wl-paste --type text --watch cliphist store # Stores only text data
 exec wl-paste --type image --watch cliphist store # Stores only image data
