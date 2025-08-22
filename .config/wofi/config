@@ -1,8 +1,6 @@
 allow_images=true
 hide_scroll=true
-no_actions=false
+no_actions=true
 term=foot
 mode=drun
---show
-no-actions=true
 width=400
