@@ -6,9 +6,13 @@
     <property name="screen0" type="empty">
       <property name="monitoreDP-1" type="empty">
         <property name="workspace0" type="empty">
-          <property name="last-image" type="string" value="/usr/share/backgrounds/xfce/xfce-leaves.svg"/>
+          <property name="last-image" type="string" value="/usr/share/backgrounds/archlinux/wave.png"/>
         </property>
       </property>
     </property>
+  </property>
+  <property name="last" type="empty">
+    <property name="window-width" type="int" value="638"/>
+    <property name="window-height" type="int" value="571"/>
   </property>
 </channel>

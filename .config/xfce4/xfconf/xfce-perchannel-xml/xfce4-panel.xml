@@ -49,6 +49,7 @@
         <value type="string" value="Stremio"/>
       </property>
       <property name="known-legacy-items" type="array">
+        <value type="string" value="clipman"/>
         <value type="string" value="xfce4-power-manager"/>
       </property>
     </property>

@@ -4,5 +4,11 @@ LastUsedVersion=210800
 [MainWindow]
 MenuBar=Disabled
 
+[Recent Files]
+File1[$e]=$HOME/29nlnURITY-TYUORGQ7k.jpg
+File2[$e]=$HOME/LzOvGKMYgm0NIqICPxiX.jpg
+Name1[$e]=29nlnURITY-TYUORGQ7k.jpg
+Name2[$e]=LzOvGKMYgm0NIqICPxiX.jpg
+
 [SideBar]
-InformationSplitterSizes=0,0
+InformationSplitterSizes=209,246

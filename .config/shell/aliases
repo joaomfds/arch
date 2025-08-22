@@ -11,3 +11,5 @@ alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
 alias h='Hyprland'
+alias g="tgpt -provider openai -key $OPENAI_API_KEY -model gpt-5-nano"
+
