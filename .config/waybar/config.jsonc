@@ -4,6 +4,7 @@
     "height": 23, // Waybar height (to be removed for auto height)
     "spacing": 4, // Gaps between modules (4px)
     "modules-left": [
+        "custom/nwgdrawer",
         "hyprland/workspaces",
         "hyprland/window"
     ],
@@ -12,6 +13,7 @@
     ],
     "modules-right": [
         "idle_inhibitor",
+        "tray",
         "pulseaudio",
         "network",
         "power-profiles-daemon",
@@ -22,10 +24,14 @@
         //"keyboard-state",
         //"hyprland/language",
         "battery",
-        "tray",
     ],
     // Modules configuration
-     "hyprland/workspaces": {
+    "custom/nwgdrawer": {
+      "format": "☰ ",  // leave blank or put a unicode/icon code or emoji here
+      "tooltip": false,
+      "on-click": "nwg-drawer",
+     },
+    "hyprland/workspaces": {
         "persistent-workspaces": {
           "1": [],
           "2": [],

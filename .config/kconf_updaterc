@@ -26,9 +26,9 @@ done=remove_deprecated_gtk4_option
 mtime=1755199272
 
 [kwin.upd]
-ctime=1755035101
+ctime=1756066067
 done=remove_deprecated_gtk4_option,kwin-6.0-reset-active-mouse-screen,kwin-6.0-delete-desktop-switching-shortcuts,kwin-6.0-remove-breeze-tabbox-default,kwin-6.1-remove-gridview-expose-shortcuts
-mtime=1754423734
+mtime=1755963909
 
 [migrate-calendar-to-plugin-id.upd]
 ctime=1755035103
