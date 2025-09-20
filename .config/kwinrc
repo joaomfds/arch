@@ -1,12 +1,27 @@
+[Activities][LastVirtualDesktop]
+d0716c3e-18c6-490a-80ad-f326a701b6d0=79b0a554-c343-4bf3-bc5d-8bb42bead20a
+
 [Desktops]
 Id_1=79b0a554-c343-4bf3-bc5d-8bb42bead20a
-Number=1
+Id_2=bd283243-60d9-46b2-9de0-6073145292e6
+Id_3=fa146e60-8b0f-42a5-9881-8be0da4fb8f4
+Id_4=8c8d6c32-b8f6-49f3-8957-1714fccab168
+Number=4
 Rows=1
 
 [Tiling]
 padding=4
 
 [Tiling][79b0a554-c343-4bf3-bc5d-8bb42bead20a][758b9036-5d5a-4621-ba37-0d9dfcf56516]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][8c8d6c32-b8f6-49f3-8957-1714fccab168][758b9036-5d5a-4621-ba37-0d9dfcf56516]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][bd283243-60d9-46b2-9de0-6073145292e6][758b9036-5d5a-4621-ba37-0d9dfcf56516]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][fa146e60-8b0f-42a5-9881-8be0da4fb8f4][758b9036-5d5a-4621-ba37-0d9dfcf56516]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Xwayland]

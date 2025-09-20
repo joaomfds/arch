@@ -1,2 +1,5 @@
 [Libinput][1267][12375][ELAN1300:00 04F3:3057 Touchpad]
 NaturalScroll=true
+
+[Libinput][4661][43554][H5-1        Mouse]
+PointerAccelerationProfile=1
