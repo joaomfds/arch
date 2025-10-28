@@ -13,3 +13,4 @@ alias vim='nvim'
 alias h='Hyprland'
 alias g="tgpt -provider openai -key $OPENAI_API_KEY -model gpt-5-nano"
 
+alias sync_immich='rsync -avz -P -e ssh root@mercury:/opt/docker /home/joao/backup/'

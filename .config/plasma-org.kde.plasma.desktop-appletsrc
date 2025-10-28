@@ -150,7 +150,7 @@ immutability=1
 plugin=org.kde.plasma.mediacontroller
 
 [Containments][2][Applets][7][Applets][26][Configuration]
-PreloadWeight=26
+PreloadWeight=18
 
 [Containments][2][Applets][7][Applets][8]
 immutability=1
@@ -169,4 +169,4 @@ AppletOrder=3;4;5;6;7;20;21
 
 [ScreenMapping]
 itemsOnDisabledScreens=
-screenMapping=
+screenMapping=desktop:/chrome-kajebgjangihfbkjfejcanhanjmmbcfd-Default.desktop,0,d0716c3e-18c6-490a-80ad-f326a701b6d0
